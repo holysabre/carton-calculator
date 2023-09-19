@@ -59,7 +59,7 @@ class ProductsController extends AdminController
      */
     protected function form()
     {
-        return Form::make(Product::with('tiered_prices'), function (Form $form) {
+        return Form::make(Product::with([]), function (Form $form) {
             $form->display('id');
             $form->text('name');
             $form->text('price_per_square');
@@ -69,11 +69,39 @@ class ProductsController extends AdminController
             $form->text('jettison_ratio');
             $form->text('remark');
 
-            $form->hasMany('tiered_prices', function (Form\NestedForm $form) {
-                $form->text('gt', '大于');
-                $form->text('elt', '小于等于');
-                $form->text('price', '每平方单价');
-            });
+            // $form->hasMany('tiered_prices', function (Form\NestedForm $form) {
+            //     $form->text('gt', '大于');
+            //     $form->text('elt', '小于等于');
+            //     $form->text('price', '每平方单价');
+            // });
+
+            $skuParams = [
+                // 扩展第一列
+                [
+                    'name'    => '阶梯价 0-500',
+                    'field'   => 'tieredPrice_0_500',
+                    'default' => 0,
+                ],
+                [
+                    'name'    => '阶梯价 500-1000',
+                    'field'   => 'tieredPrice_500_1000',
+                    'default' => 0,
+                ],
+                [
+                    'name'    => '阶梯价 1000-5000',
+                    'field'   => 'tieredPrice_1000_5000',
+                    'default' => 0,
+                ],
+                [
+                    'name'    => '阶梯价 5000-999999',
+                    'field'   => 'tieredPrice_5000_999999',
+                    'default' => 0,
+                ],
+            ];
+
+            $skuData = $form->model()->prices;
+            $skuString = json_encode($skuData);
+            $form->sku('sku', 'Sku')->addColumn($skuParams)->value($skuString);
 
             $form->display('created_at');
             $form->display('updated_at');

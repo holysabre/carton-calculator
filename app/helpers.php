@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-function route_class()
-{
-    return str_replace('.', '-', Route::currentRouteName());
+if (!function_exists('route_class')) {
+    function route_class()
+    {
+        return str_replace('.', '-', Route::currentRouteName());
+    }
 }

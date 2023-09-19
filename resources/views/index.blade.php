@@ -13,13 +13,27 @@
                     <input class="form-check-input" type="radio" name="product-id" value="{{ $product->id }}" id="product-id-{{ $product->id }}">
                     <label class="form-check-label" for="product-id-{{ $product->id }}">
                         {{ $product->name }}
-                        @isset ($product->tiered_prices)
+                        <!-- @isset ($product->tiered_prices)
                         <dl>
                             @foreach ($product->tiered_prices as $price)
                             <dd>大于 {{$price->gt}},小于等于 {{$price->elt}} ￥{{$price->price}}</dd>
                             @endforeach
                         </dl>
-                        @endisset
+                        @endisset -->
+                    </label>
+                </div>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="container-md">
+            <label for="" class="form-label">请选择材质：</label>
+            <div class="input-group">
+                @foreach ($sku_attribute->attr_value as $attr)
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="product-attr" value="{{ $attr }}" id="product-id-{{ $attr}}">
+                    <label class="form-check-label" for="product-id-{{ $attr }}">
+                        {{ $attr }}
                     </label>
                 </div>
                 @endforeach
@@ -77,6 +91,7 @@
 @section('javascript')
 <script>
     var id = 0,
+        attr = '',
         length = 0,
         width = 0,
         height = 0,
@@ -110,6 +125,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             data: {
+                attr: attr,
                 length: length,
                 width: width,
                 height: height,
@@ -136,6 +152,7 @@
     function getData() {
         var selected_product = $('input[name="product-id"]:checked')
         id = selected_product.val()
+        attr = $('input[name="product-attr"]').val()
         length = $('input[name="length"]').val()
         width = $('input[name="width"]').val()
         height = $('input[name="height"]').val()

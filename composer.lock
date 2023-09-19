@@ -4,8 +4,68 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6be6670c8d38b27cdd25b923043fdeef",
+    "content-hash": "06888d4baea249a6ff9ce34620b0b9b5",
     "packages": [
+        {
+            "name": "abbotton/dcat-sku-plus",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Abbotton/dcat-sku-plus.git",
+                "reference": "b2b5dce2f8f47b984a7f2b0b0fe6e8b9fa153325"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Abbotton/dcat-sku-plus/zipball/b2b5dce2f8f47b984a7f2b0b0fe6e8b9fa153325",
+                "reference": "b2b5dce2f8f47b984a7f2b0b0fe6e8b9fa153325",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "dcat/laravel-admin": "~2.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "dcat-admin": "Dcat\\Admin\\Extension\\DcatSkuPlus\\DcatSkuPlusServiceProvider",
+                "laravel": {
+                    "providers": [
+                        "Dcat\\Admin\\Extension\\DcatSkuPlus\\DcatSkuPlusServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Dcat\\Admin\\Extension\\DcatSkuPlus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Abbotton",
+                    "email": "uctoo@foxmail.com"
+                }
+            ],
+            "description": "基于Dcat Admin的SKU扩展增强版",
+            "homepage": "https://github.com/abbotton/dcat-sku-plus",
+            "keywords": [
+                "dcat-admin",
+                "extension"
+            ],
+            "support": {
+                "issues": "https://github.com/Abbotton/dcat-sku-plus/issues",
+                "source": "https://github.com/Abbotton/dcat-sku-plus/tree/v1.0.0"
+            },
+            "time": "2021-07-09T00:30:32+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "v2.1.1",

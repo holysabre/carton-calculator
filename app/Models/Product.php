@@ -10,6 +10,8 @@ class Product extends Model
 {
 	use HasDateTimeFormatter;
 
+	protected $fillable = ['sku'];
+
 	public function tiered_prices()
 	{
 		return $this->hasMany(ProductTieredPrice::class);
