@@ -152,7 +152,7 @@
     function getData() {
         var selected_product = $('input[name="product-id"]:checked')
         id = selected_product.val()
-        attr = $('input[name="product-attr"]').val()
+        attr = $('input[name="product-attr"]:checked').val()
         length = $('input[name="length"]').val()
         width = $('input[name="width"]').val()
         height = $('input[name="height"]').val()

@@ -78,18 +78,33 @@ class ProductsController extends AdminController
             $skuParams = [
                 // 扩展第一列
                 [
-                    'name'    => '阶梯价 0-500',
-                    'field'   => 'tieredPrice_0_500',
+                    'name'    => '阶梯价 0-400',
+                    'field'   => 'tieredPrice_0_400',
                     'default' => 0,
                 ],
                 [
-                    'name'    => '阶梯价 500-1000',
-                    'field'   => 'tieredPrice_500_1000',
+                    'name'    => '阶梯价 400-1000',
+                    'field'   => 'tieredPrice_400_1000',
                     'default' => 0,
                 ],
                 [
-                    'name'    => '阶梯价 1000-5000',
-                    'field'   => 'tieredPrice_1000_5000',
+                    'name'    => '阶梯价 1000-2000',
+                    'field'   => 'tieredPrice_1000_2000',
+                    'default' => 0,
+                ],
+                [
+                    'name'    => '阶梯价 2000-3000',
+                    'field'   => 'tieredPrice_2000_3000',
+                    'default' => 0,
+                ],
+                [
+                    'name'    => '阶梯价 3000-4000',
+                    'field'   => 'tieredPrice_3000_4000',
+                    'default' => 0,
+                ],
+                [
+                    'name'    => '阶梯价 4000-5000',
+                    'field'   => 'tieredPrice_4000_5000',
                     'default' => 0,
                 ],
                 [

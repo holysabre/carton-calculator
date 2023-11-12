@@ -37,7 +37,7 @@ class IndexController extends Controller
 
         $total_square = number_format((($request->length + $request->width) * ($request->width + $request->height)) * ($request->qty / $product->per_bundle_qty) * $product->thickness / 100 / 10000, 3);
 
-        $score = (($request->length + $request->width) * 2 + 2) * ($request->width + $request->height + 0.3) / 10000;
+        $score = (($request->length + $request->width) * 2 + 3) * ($request->width + $request->height + 0.3) / 10000;
 
         $sku = json_decode($product->sku, 1);
 
@@ -51,8 +51,9 @@ class IndexController extends Controller
         }
         $price = $skus[$request->attr];
         $tiered_price = 0;
+        $used_square = $score * $request->qty;
         foreach ($price as $cond) {
-            if ($cond['gt'] < $request->qty && $cond['lte'] >= $request->qty) {
+            if ($cond['gt'] < $used_square && $cond['lte'] >= $used_square) {
                 $tiered_price = $cond['price'];
             }
         }
@@ -77,6 +78,8 @@ class IndexController extends Controller
 
         return response()->json([
             'status' => true,
+            'score' => $score,
+            'tiered_price' => $tiered_price,
             'per_price' => number_format($per_price, 3),
             'per_price_by_profit' => number_format($per_price_by_profit, 3),
             'total_square' => $total_square,
